@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef , NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
 import { Account, LoginModalService, Principal } from '../shared';
@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit {
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private modal: NgbModal
     ) {
     }
 
@@ -44,5 +45,8 @@ export class HomeComponent implements OnInit {
 
     login() {
         this.modalRef = this.loginModalService.open();
+    }
+    openVerticallyCentered(content) {
+        this.modal.open(content,  { size: 'lg' });
     }
 }
